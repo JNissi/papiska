@@ -18,7 +18,7 @@
 		<md-content layout="column" layout-fill>
 			<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="main">
 				<md-list>
-					<md-list-item ng-click="go('home');">
+					<md-list-item ui-sref="home">
 						<md-icon md-font-icon="fa fa-home"></md-icon>
 						<p>Home</p>
 					</md-list-item>
@@ -33,6 +33,9 @@
 						</md-button>
 					</div>
 				</md-toolbar>
+				<md-content flex ui-view>
+
+				</md-content>
 			</md-content>
 		</md-content>
 	</body>

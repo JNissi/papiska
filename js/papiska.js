@@ -20,4 +20,19 @@ angular.module(
 			$mdSidenav('main')
 				.toggle();
 		}, 200);
+	})
+	.config(function($urlRouterProvider) {
+		$urlRouterProvider
+			.otherwise('/');
+	})
+	.config(function($stateProvider) {
+		$stateProvider
+			.state('home', {
+				url: '/',
+				templateUrl: 'home/index.html',
+				controller: 'HomeController'
+			});
+	})
+	.controller('HomeController', function() {
+
 	});
