@@ -1,0 +1,18 @@
+<md-card>
+	<h2>Play queue</h2>
+	<md-list>
+		<md-list-item ng-repeat="track in queue" class="md-2-line">
+			<div class="md-list-item-text" layout="column">
+				<h3>{{track.name}}</h3>
+				<p>
+					<span ng-repeat="artist in track.artists">{{$index>0?', ':''}}{{artist.name}}</span>
+					-
+					<span class="md-accent"><small>[{{track.album.name}}]</small></span>
+				</p>
+			</div>
+			<div layout="column"  layout-align="right center">
+				<p>{{track.length | time}}</p>
+			</div>
+		</md-list-item>
+	</md-list>
+</md-card>

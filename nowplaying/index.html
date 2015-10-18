@@ -1,0 +1,28 @@
+<md-card>
+	<md-content>
+		<h2>{{currentTrack.name}}</h2>
+		<p><span ng-repeat="artist in currentTrack.artists">{{artist.name}}</span>:<span>{{currentTrack.album.name}}</span></p>
+		<div layout="column" class="md-padding">
+			<p>{{timePosition | time }} / {{currentTrack.length | time}}</p>
+			<md-slider aria-label="progress" max="{{currentTrack.length}}" ng-model="timePosition"></md-slider>
+			<div layout="row" layout-align="center center">
+				<md-button class="md-fab md-mini" aria-label="Previous" ng-click="previous()">
+					<md-icon>skip_previous</md-icon>
+				</md-button>
+				<md-button class="md-fab" aria-label="Pause" ng-show="state == 'playing'" ng-click="pause()">
+					<md-icon>pause</md-icon>
+				</md-button>
+				<md-button class="md-fab" aria-label="Play" ng-hide="state == 'playing'" ng-click="resume()">
+					<md-icon>play_arrow</md-icon>
+				</md-button>
+				<md-button class="md-fab md-mini" aria-label="Stop">
+					<md-icon>stop</md-icon>
+				</md-button>
+				<md-button class="md-fab md-mini" aria-label="Next" ng-click="next()">
+					<md-icon>skip_next</md-icon>
+				</md-button>
+			</div>
+		</div>
+	</md-content>
+</md-card>
+Now Playing: {{state}}

@@ -3,13 +3,13 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>♫Papiska♫</title>
-		<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+		<title>♫Papiska♪</title>
+		<link rel="stylesheet" href="papiska.css">
 		<link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
 		<script src="/mopidy/mopidy.js"></script>
 		<script src="bower_components/angular/angular.js"></script>
 		<script src="bower_components/angular-animate/angular-animate.js"></script>
-		<script src="/bower_components/angular-aria/angular-aria.js"></script>
+		<script src="bower_components/angular-aria/angular-aria.js"></script>
 		<script src="bower_components/angular-material/angular-material.js"></script>
 		<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 		<script src="js/papiska.js"></script>
@@ -18,9 +18,17 @@
 		<md-content layout="column" layout-fill>
 			<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="main">
 				<md-list>
-					<md-list-item ui-sref="home">
-						<md-icon md-font-icon="fa fa-home"></md-icon>
+					<md-list-item ng-click="go('home')">
+						<md-icon>home</md-icon>
 						<p>Home</p>
+					</md-list-item>
+					<md-list-item ng-click="go('nowplaying')">
+						<md-icon>music_note</md-icon>
+						<p>Now playing</p>
+					</md-list-item>
+					<md-list-item ng-click="go('queue')">
+						<md-icon>queue_music</md-icon>
+						<p>Play queue</p>
 					</md-list-item>
 				</md-list>
 			</md-sidenav>
@@ -29,7 +37,7 @@
 				<md-toolbar>
 					<div class="md-toolbar-tools">
 						<md-button class="md-icon-button" aria-label="Menu button" ng-click="toggleMainNav()">
-							<i class="fa fa-bars"></i>
+							<md-icon>menu</md-icon>
 						</md-button>
 					</div>
 				</md-toolbar>
