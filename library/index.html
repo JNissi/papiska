@@ -1,0 +1,11 @@
+<md-card>
+	<h2>Music library</h2>
+	<md-list>
+		<md-list-item ng-repeat="item in library" class="md-2-line" ng-click="browse(item.uri)">
+			<div class="md-list-item-text" layout="column">
+				<h3>{{item.name}}</h3>
+				<p>{{item.type}}</p>
+			</div>
+		</md-list-item>
+	</md-list>
+</md-card>

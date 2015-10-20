@@ -29,6 +29,7 @@ angular.module(
 	})
 	.config(function($urlRouterProvider) {
 		$urlRouterProvider
+			.when('/library', '/library/')
 			.otherwise('/');
 	})
 	.config(function($stateProvider) {
@@ -47,6 +48,11 @@ angular.module(
 				url: '/queue',
 				templateUrl: 'queue/index.html',
 				controller: 'QueueController'
+			})
+			.state('library', {
+				url: '/library/:uri',
+				templateUrl: 'library/index.html',
+				controller: 'LibraryController'
 			});
 	})
 	.controller('HomeController', function($scope) {
@@ -116,6 +122,30 @@ angular.module(
 				});
 			});
 		});
+	})
+	.controller('LibraryController', function($scope, mopidy, $state, $stateParams) {
+		(function getLib() {
+			var uri = decodeURIComponent($stateParams.uri) || null;
+
+			console.log('listing: ', uri);
+
+			if (!mopidy.library) {
+				return mopidy.on('state:online', function() {
+					getLib();
+				});
+			}
+
+			mopidy.library.browse({uri:uri}).then(function(data) {
+				$scope.$apply(function(scope) {
+					scope.library = data;
+				});
+			});
+
+		})();
+
+		$scope.browse = function(uri) {
+			$state.go('library', {uri: encodeURIComponent(uri)});
+		};
 	})
 	.factory('mopidy', function() {
 		var mopidy = new Mopidy({
